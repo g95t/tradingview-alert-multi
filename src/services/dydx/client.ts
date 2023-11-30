@@ -1,35 +1,103 @@
 import { DydxClient } from '@dydxprotocol/v3-client';
 import config = require('config');
 import 'dotenv/config';
+import { AlertObject } from '../../types';
 
 class DYDXConnector {
 	client: DydxClient | undefined;
 	positionID = '0';
 	static instance: DYDXConnector | null = null;
 
-	public constructor() {
+	APIKEY: string | undefined;
+	APIPASSPHRASE: string | undefined;
+	APISECRET: string | undefined;
+	STARKPUBLICKEY: string | undefined;
+	STARKPRIVATEKEY: string | undefined;
+	ETHADDRESS: string | undefined;
+
+	public constructor(alertMessage: AlertObject) {
+
+		switch (alertMessage.exchID) {
+			case 1:
+				this.APIKEY = process.env.API_KEY1!;
+				this.APIPASSPHRASE = process.env.API_PASSPHRASE1!;
+				this.APISECRET = process.env.API_SECRET1!;
+				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY1!;
+				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY1!;
+				this.ETHADDRESS = process.env.ETH_ADDRESS1!;
+				break;
+      			case 2:
+				this.APIKEY = process.env.API_KEY2!;
+				this.APIPASSPHRASE = process.env.API_PASSPHRASE2!;
+				this.APISECRET = process.env.API_SECRET2!;
+				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY2!;
+				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY2!;
+				this.ETHADDRESS = process.env.ETH_ADDRESS2!;
+				break;
+			case 3:
+				this.APIKEY = process.env.API_KEY3!;
+				this.APIPASSPHRASE = process.env.API_PASSPHRASE3!;
+				this.APISECRET = process.env.API_SECRET3!;
+				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY3!;
+				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY3!;
+				this.ETHADDRESS = process.env.ETH_ADDRESS3!;
+				break;
+      			case 4:
+				this.APIKEY = process.env.API_KEY4!;
+				this.APIPASSPHRASE = process.env.API_PASSPHRASE4!;
+				this.APISECRET = process.env.API_SECRET4!;
+				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY4!;
+				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY4!;
+				this.ETHADDRESS = process.env.ETH_ADDRESS4!;
+				break;
+			case 5:
+				this.APIKEY = process.env.API_KEY5!;
+				this.APIPASSPHRASE = process.env.API_PASSPHRASE5!;
+				this.APISECRET = process.env.API_SECRET5!;
+				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY5!;
+				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY5!;
+				this.ETHADDRESS = process.env.ETH_ADDRESS5!;
+				break;
+      			case 6:
+				this.APIKEY = process.env.API_KEY6!;
+				this.APIPASSPHRASE = process.env.API_PASSPHRASE6!;
+				this.APISECRET = process.env.API_SECRET6!;
+				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY6!;
+				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY6!;
+				this.ETHADDRESS = process.env.ETH_ADDRESS6!;
+				break;
+			default:
+				this.APIKEY = process.env.API_KEY!;
+				this.APIPASSPHRASE = process.env.API_PASSPHRASE!;
+				this.APISECRET = process.env.API_SECRET!;
+				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY!;
+				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY!;
+				this.ETHADDRESS = process.env.ETH_ADDRESS!;
+				break;
+    		}
+
 		if (
-			!process.env.API_KEY ||
-			!process.env.API_PASSPHRASE ||
-			!process.env.API_PASSPHRASE
+			!this.APIKEY ||
+			!this.APIPASSPHRASE ||
+			!this.APIPASSPHRASE
 		) {
 			console.log('API Key for dYdX is not set as environment variable');
 			return;
 		}
-		if (!process.env.STARK_PUBLIC_KEY || !process.env.STARK_PRIVATE_KEY) {
+		if (!this.STARKPUBLICKEY || !this.STARKPRIVATEKEY) {
 			console.log('STARK Key for dYdX is not set as environment variable');
 			return;
 		}
 
 		const apiKeys = {
-			key: process.env.API_KEY,
-			passphrase: process.env.API_PASSPHRASE,
-			secret: process.env.API_SECRET
+			key: this.APIKEY,
+			passphrase: this.APIPASSPHRASE,
+			secret: this.APISECRET
 		};
 
 		const starkKeyPair = {
-			publicKey: process.env.STARK_PUBLIC_KEY,
-			privateKey: process.env.STARK_PRIVATE_KEY
+			publicKey: this.STARKPUBLICKEY,
+			privateKey: this.STARKPRIVATEKEY
 		};
 
 		this.client = new DydxClient(config.get('Dydx.Network.host'), {
@@ -40,12 +108,13 @@ class DYDXConnector {
 		});
 	}
 
-	static async build() {
+	static async build(alertMessage: AlertObject) {
 		if (!this.instance) {
-			const connector = new DYDXConnector();
+			const connector = new DYDXConnector(alertMessage);
 			if (!connector || !connector.client) return;
+
 			const account = await connector.client.private.getAccount(
-				process.env.ETH_ADDRESS
+				connector.ETHADDRESS
 			);
 
 			connector.positionID = account.account.positionId;
