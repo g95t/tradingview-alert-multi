@@ -10,22 +10,22 @@ export const dydxGetAccount = async (alertMessage: AlertObject) => {
 		let ETHADDRESS: string | undefined;
 
 		switch (alertMessage.exchID) {
-			case 1:
+			case '1':
 				ETHADDRESS = process.env.ETH_ADDRESS1!;
 				break;
-      			case 2:
+      			case '2':
 				ETHADDRESS = process.env.ETH_ADDRESS2!;
 				break;
-			case 3:
+			case '3':
 				ETHADDRESS = process.env.ETH_ADDRESS3!;
 				break;
-      			case 4:
+      			case '4':
 				ETHADDRESS = process.env.ETH_ADDRESS4!;
 				break;
-			case 5:
+			case '5':
 				ETHADDRESS = process.env.ETH_ADDRESS5!;
 				break;
-      			case 6:
+      			case '6':
 				ETHADDRESS = process.env.ETH_ADDRESS6!;
 				break;
 			default:
