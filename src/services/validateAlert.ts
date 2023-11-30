@@ -3,9 +3,7 @@ import { Market } from '@dydxprotocol/v3-client';
 import DYDXConnector from './dydx/client';
 import { getStrategiesDB } from '../helper';
 
-export const validateAlert = async (
-	alertMessage: AlertObject
-): Promise<boolean> => {
+export const validateAlert = async (alertMessage: AlertObject): Promise<boolean> => {
 	// check correct alert JSON format
 	if (!Object.keys(alertMessage).length) {
 		console.error('Tradingview alert is not JSON format.');
@@ -13,13 +11,38 @@ export const validateAlert = async (
 	}
 
 	// check passphrase
-	if (process.env.TRADINGVIEW_PASSPHRASE && !alertMessage.passphrase) {
+	let TRADINGVIEWPASSPHRASE: string | undefined;
+	
+	switch (alertMessage.exchID) {
+		case 1:
+			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE1!;
+			break;
+      		case 2:
+			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE2!;
+			break;
+		case 3:
+			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE3!;
+			break;
+      		case 4:
+			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE4!;
+			break;
+		case 5:
+			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE5!;
+			break;
+      		case 6:
+			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE6!;
+			break;
+      		default:
+			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE!;
+			break;
+    	}
+	if (TRADINGVIEWPASSPHRASE && !alertMessage.passphrase) {
 		console.error('Passphrase is not set on alert message.');
 		return false;
 	}
 	if (
 		alertMessage.passphrase &&
-		alertMessage.passphrase != process.env.TRADINGVIEW_PASSPHRASE
+		alertMessage.passphrase != TRADINGVIEWPASSPHRASE
 	) {
 		console.error('Passphrase from tradingview alert does not match to config');
 		return false;
@@ -74,7 +97,7 @@ export const validateAlert = async (
 			return false;
 		}
 
-		const connector = await DYDXConnector.build();
+		const connector = await DYDXConnector.build(alertMessage);
 
 		const markets = await connector.client.public.getMarkets(market);
 		// console.log('markets', markets);
