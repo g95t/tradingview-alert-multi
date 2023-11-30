@@ -3,14 +3,16 @@ import * as fs from 'fs';
 import { getFill, getOrder } from '..';
 import config = require('config');
 import { _sleep, getStrategiesDB } from '../../helper';
+import { AlertObject } from '../../types';
 
 export const dydxExportOrder = async (
 	strategy: string,
 	order: OrderResponseObject,
-	tradingviewPrice: number
+	tradingviewPrice: number,
+	alertMessage: AlertObject
 ) => {
 	_sleep(2000);
-	const result = await getOrder(order.id);
+	const result = await getOrder(order.id, alertMessage);
 	if (!result) {
 		return;
 	}
@@ -18,7 +20,7 @@ export const dydxExportOrder = async (
 
 	let price;
 	if (result.order.status == 'FILLED') {
-		const fill = await getFill(order.id);
+		const fill = await getFill(order.id, alertMessage);
 		price = fill ? fill.price : '';
 
 		console.log('order id:', order.id, 'is filled at', price);
