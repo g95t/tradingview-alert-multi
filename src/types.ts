@@ -8,7 +8,7 @@ import { PositionSide } from '@perp/sdk-curie';
 
 export type AlertObject = {
 	exchange?: string;
-	exchID?: number;
+	exchID?: string;
 	strategy: string;
 	market: string;
 	size?: number;
