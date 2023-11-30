@@ -2,13 +2,14 @@ import DYDXConnector from './client';
 import { OrderResponseObject } from '@dydxprotocol/v3-client';
 import { dydxOrderParams } from '../../types';
 import { _sleep } from '../../helper';
+import { AlertObject } from '../../types';
 
-export const dydxCreateOrder = async (orderParams: dydxOrderParams) => {
+export const dydxCreateOrder = async (orderParams: dydxOrderParams, alertMessage: AlertObject) => {
 	let count = 0;
 	const maxTries = 3;
 	while (count <= maxTries) {
 		try {
-			const connector = await DYDXConnector.build();
+			const connector = await DYDXConnector.build(alertMessage);
 
 			const orderResult: { order: OrderResponseObject } =
 				await connector.client.private.createOrder(
