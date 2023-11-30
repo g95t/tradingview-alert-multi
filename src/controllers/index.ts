@@ -17,7 +17,7 @@ const router: Router = express.Router();
 router.get('/', async (req, res) => {
 	console.log('Recieved GET request.');
 
-	const dydxAccount = await dydxGetAccount();
+	const dydxAccount = await dydxGetAccount(req.body);
 	const perpAccount = await perpGetAccount();
 
 	if (!dydxAccount && !perpAccount) {
@@ -59,12 +59,13 @@ router.post('/', async (req, res) => {
 		default: {
 			const orderParams = await dydxBuildOrderParams(req.body);
 			if (!orderParams) return;
-			orderResult = await dydxCreateOrder(orderParams);
+			orderResult = await dydxCreateOrder(orderParams, req.body);
 			if (!orderResult) return;
 			await dydxExportOrder(
 				req.body['strategy'],
 				orderResult.order,
-				req.body['price']
+				req.body['price'],
+				req.body
 			);
 		}
 	}
