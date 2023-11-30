@@ -1,3 +1,10 @@
+# Differences within this version
+
+Compared to the fantastic work of 0xIbuki (junta), I added the possibility to specify (via the 'exchID' parameter in the alert message) which DyDx account to operate with (up to a maximum of 7 different accounts).
+Original project: https://github.com/junta/tradingview-alert-connector
+
+----------------------------------------------------------------
+
 # Tradingview-Alert-Connector
 
 Tradingview-Alert-Connector is a free and noncustodial tool for you to Integrate tradingView alert and execute automated trading for perpetual futures DEXes.
