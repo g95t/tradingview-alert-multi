@@ -1,6 +1,7 @@
 # Differences within this version
 
-Compared to the fantastic work of 0xIbuki (junta), I added the possibility to specify (via the 'exchID' parameter in the alert message) which DyDx account to operate with (up to a maximum of 7 different accounts).
+Compared to the fantastic work of 0xIbuki (junta), I added the possibility to specify in the alert message (via the parameter 'exchID' [=1/2/3/4/5/6/everything else]) which dYdX account to operate with (up to a maximum of 6 different accounts plus the default one).
+
 Original project: https://github.com/junta/tradingview-alert-connector
 
 ----------------------------------------------------------------
