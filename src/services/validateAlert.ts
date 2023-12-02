@@ -14,27 +14,34 @@ export const validateAlert = async (alertMessage: AlertObject): Promise<boolean>
 	let TRADINGVIEWPASSPHRASE: string | undefined;
 	
 	switch (alertMessage.exchID) {
-		case '1':
+		case '1': {
 			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE1!;
 			break;
-      		case '2':
+		}
+      		case '2': {
 			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE2!;
 			break;
-		case '3':
+		}
+		case '3': {
 			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE3!;
 			break;
-      		case '4':
+		}
+      		case '4': {
 			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE4!;
 			break;
-		case '5':
+		}
+		case '5': {
 			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE5!;
 			break;
-      		case '6':
+		}
+      		case '6': {
 			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE6!;
 			break;
-      		default:
+		}
+      		default: {
 			TRADINGVIEWPASSPHRASE = process.env.TRADINGVIEW_PASSPHRASE!;
 			break;
+		}
     	}
 	if (TRADINGVIEWPASSPHRASE && !alertMessage.passphrase) {
 		console.error('Passphrase is not set on alert message.');
