@@ -18,7 +18,7 @@ class DYDXConnector {
 	public constructor(alertMessage: AlertObject) {
 
 		switch (alertMessage.exchID) {
-			case '1':
+			case '1': {
 				this.APIKEY = process.env.API_KEY1!;
 				this.APIPASSPHRASE = process.env.API_PASSPHRASE1!;
 				this.APISECRET = process.env.API_SECRET1!;
@@ -26,7 +26,8 @@ class DYDXConnector {
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY1!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS1!;
 				break;
-      			case '2':
+			}
+      			case '2': {
 				this.APIKEY = process.env.API_KEY2!;
 				this.APIPASSPHRASE = process.env.API_PASSPHRASE2!;
 				this.APISECRET = process.env.API_SECRET2!;
@@ -34,7 +35,8 @@ class DYDXConnector {
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY2!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS2!;
 				break;
-			case '3':
+			}
+			case '3': {
 				this.APIKEY = process.env.API_KEY3!;
 				this.APIPASSPHRASE = process.env.API_PASSPHRASE3!;
 				this.APISECRET = process.env.API_SECRET3!;
@@ -42,7 +44,8 @@ class DYDXConnector {
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY3!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS3!;
 				break;
-      			case '4':
+			}
+      			case '4': {
 				this.APIKEY = process.env.API_KEY4!;
 				this.APIPASSPHRASE = process.env.API_PASSPHRASE4!;
 				this.APISECRET = process.env.API_SECRET4!;
@@ -50,7 +53,8 @@ class DYDXConnector {
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY4!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS4!;
 				break;
-			case '5':
+			}
+			case '5': {
 				this.APIKEY = process.env.API_KEY5!;
 				this.APIPASSPHRASE = process.env.API_PASSPHRASE5!;
 				this.APISECRET = process.env.API_SECRET5!;
@@ -58,7 +62,8 @@ class DYDXConnector {
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY5!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS5!;
 				break;
-      			case '6':
+			}
+      			case '6': {
 				this.APIKEY = process.env.API_KEY6!;
 				this.APIPASSPHRASE = process.env.API_PASSPHRASE6!;
 				this.APISECRET = process.env.API_SECRET6!;
@@ -66,7 +71,8 @@ class DYDXConnector {
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY6!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS6!;
 				break;
-			default:
+			}
+			default: {
 				this.APIKEY = process.env.API_KEY!;
 				this.APIPASSPHRASE = process.env.API_PASSPHRASE!;
 				this.APISECRET = process.env.API_SECRET!;
@@ -74,6 +80,7 @@ class DYDXConnector {
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS!;
 				break;
+			}
     		}
 
 		if (
