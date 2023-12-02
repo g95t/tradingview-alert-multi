@@ -25,6 +25,7 @@ class DYDXConnector {
 				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY1!;
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY1!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS1!;
+				console.log('Selected account: 1');
 				break;
 			}
       			case '2': {
@@ -34,6 +35,7 @@ class DYDXConnector {
 				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY2!;
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY2!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS2!;
+				console.log('Selected account: 2');
 				break;
 			}
 			case '3': {
@@ -43,6 +45,7 @@ class DYDXConnector {
 				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY3!;
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY3!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS3!;
+				console.log('Selected account: 3');
 				break;
 			}
       			case '4': {
@@ -52,6 +55,7 @@ class DYDXConnector {
 				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY4!;
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY4!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS4!;
+				console.log('Selected account: 4');
 				break;
 			}
 			case '5': {
@@ -61,6 +65,7 @@ class DYDXConnector {
 				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY5!;
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY5!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS5!;
+				console.log('Selected account: 5');
 				break;
 			}
       			case '6': {
@@ -70,6 +75,7 @@ class DYDXConnector {
 				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY6!;
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY6!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS6!;
+				console.log('Selected account: 6');
 				break;
 			}
 			default: {
@@ -79,6 +85,7 @@ class DYDXConnector {
 				this.STARKPUBLICKEY = process.env.STARK_PUBLIC_KEY!;
 				this.STARKPRIVATEKEY = process.env.STARK_PRIVATE_KEY!;
 				this.ETHADDRESS = process.env.ETH_ADDRESS!;
+				console.log('Selected account: default');
 				break;
 			}
     		}
