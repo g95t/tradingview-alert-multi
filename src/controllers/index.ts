@@ -9,7 +9,8 @@ import {
 	perpCreateOrder,
 	perpBuildOrderParams,
 	perpGetAccount,
-	perpExportOrder
+	perpExportOrder,
+	getIPAddress
 } from '../services';
 
 const router: Router = express.Router();
@@ -80,5 +81,8 @@ router.post('/', async (req, res) => {
 router.get('/debug-sentry', function mainHandler(req, res) {
 	throw new Error('My first Sentry error!');
 });
+
+const ipAddress = getIPAddress();
+console.log('Indirizzo IP:', ipAddress);
 
 export default router;
