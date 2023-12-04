@@ -15,8 +15,6 @@ import {
 
 const router: Router = express.Router();
 
-console.log('Version: 0.1');
-
 router.get('/', async (req, res) => {
 	console.log('Recieved GET request.');
 
@@ -33,6 +31,8 @@ router.get('/', async (req, res) => {
 			perpAccount;
 		res.send(message);
 	}
+
+	console.log('IP Address:', req.ip);
 });
 
 router.post('/', async (req, res) => {
@@ -81,8 +81,5 @@ router.post('/', async (req, res) => {
 router.get('/debug-sentry', function mainHandler(req, res) {
 	throw new Error('My first Sentry error!');
 });
-
-const ipAddress = getIPAddress();
-console.log('IP Address:', ipAddress);
 
 export default router;
