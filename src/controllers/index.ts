@@ -83,6 +83,6 @@ router.get('/debug-sentry', function mainHandler(req, res) {
 });
 
 const ipAddress = getIPAddress();
-console.log('Indirizzo IP:', ipAddress);
+console.log('IP Address:', ipAddress);
 
 export default router;
