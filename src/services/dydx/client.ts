@@ -17,6 +17,8 @@ class DYDXConnector {
 
 	public constructor(alertMessage: AlertObject) {
 
+		console.log('Constructor');
+
 		switch (alertMessage.exchID) {
 			case '1': {
 				this.APIKEY = process.env.API_KEY1!;
@@ -134,6 +136,7 @@ class DYDXConnector {
 			connector.positionID = account.account.positionId;
 			this.instance = connector;
 		}
+		console.log('Built done');
 
 		return this.instance;
 	}
