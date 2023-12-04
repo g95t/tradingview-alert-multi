@@ -18,17 +18,16 @@ const router: Router = express.Router();
 router.get('/', async (req, res) => {
 	console.log('Recieved GET request.');
 
-	// const dydxAccount = await dydxGetAccount(req.body);
-	// const perpAccount = await perpGetAccount();
+	const dydxAccount = await dydxGetAccount(req.body);
+	const perpAccount = await perpGetAccount();
 
-	// if (!dydxAccount && !perpAccount) {
-		// res.send('Error on getting account data');
-	// } else {
+	if (!dydxAccount && !perpAccount) {
+		res.send('Error');
+	} else {
 		// const message = 'D account (default) ready: ' + dydxAccount + ' | P account ready: ' +	perpAccount;
 		// res.send(message);
-	// }
-
-	res.send('OK');
+		res.send('OK');
+	}
 	
 	const clientIP = getIPAddress(req);
 	console.log('IP address:', clientIP);
