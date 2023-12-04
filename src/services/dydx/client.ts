@@ -17,8 +17,6 @@ class DYDXConnector {
 
 	public constructor(alertMessage: AlertObject) {
 
-		console.log('Constructor');
-
 		switch (alertMessage.exchID) {
 			case '1': {
 				this.APIKEY = process.env.API_KEY1!;
@@ -125,18 +123,15 @@ class DYDXConnector {
 	}
 
 	static async build(alertMessage: AlertObject) {
-		if (!this.instance) {
-			const connector = new DYDXConnector(alertMessage);
-			if (!connector || !connector.client) return;
+		const connector = new DYDXConnector(alertMessage);
+		if (!connector || !connector.client) return;
 
-			const account = await connector.client.private.getAccount(
-				connector.ETHADDRESS
-			);
+		const account = await connector.client.private.getAccount(
+			connector.ETHADDRESS
+		);
 
-			connector.positionID = account.account.positionId;
-			this.instance = connector;
-		}
-		console.log('Built done');
+		connector.positionID = account.account.positionId;
+		this.instance = connector;
 
 		return this.instance;
 	}
