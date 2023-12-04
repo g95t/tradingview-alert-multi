@@ -12,37 +12,30 @@ export const dydxGetAccount = async (alertMessage: AlertObject) => {
 		switch (alertMessage.exchID) {
 			case '1': {
 				ETHADDRESS = process.env.ETH_ADDRESS1!;
-				console.log('ETH1');
 				break;
 			}
       			case '2': {
 				ETHADDRESS = process.env.ETH_ADDRESS2!;
-				console.log('ETH2');
 				break;
 			}
 			case '3': {
 				ETHADDRESS = process.env.ETH_ADDRESS3!;
-				console.log('ETH3');
 				break;
 			}
       			case '4': {
 				ETHADDRESS = process.env.ETH_ADDRESS4!;
-				console.log('ETH4');
 				break;
 			}
 			case '5': {
 				ETHADDRESS = process.env.ETH_ADDRESS5!;
-				console.log('ETH5');
 				break;
 			}
       			case '6': {
 				ETHADDRESS = process.env.ETH_ADDRESS6!;
-				console.log('ETH6');
 				break;
 			}
 			default: {
 				ETHADDRESS = process.env.ETH_ADDRESS!;
-				console.log('ETH default');
 				break;
 			}
     		}
