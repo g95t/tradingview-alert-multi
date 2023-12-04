@@ -14,6 +14,8 @@ import {
 
 const router: Router = express.Router();
 
+console.log('Version: 0.1');
+
 router.get('/', async (req, res) => {
 	console.log('Recieved GET request.');
 
