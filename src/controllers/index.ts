@@ -32,7 +32,9 @@ router.get('/', async (req, res) => {
 		res.send(message);
 	}
 
-	console.log('IP Address:', req.ip);
+  	const forwardedFor = req.headers['x-forwarded-for'];
+  	const clientIP = forwardedFor ? forwardedFor.split(',')[0] : req.ip;
+	console.log('IP address:', clientIP);
 });
 
 router.post('/', async (req, res) => {
