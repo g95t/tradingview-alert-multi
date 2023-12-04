@@ -1,6 +1,6 @@
-const { networkInterfaces } = require('os');
+import { networkInterfaces } from 'os';
 
-function getIPAddress() {
+export function getIPAddress() {
   const interfaces = networkInterfaces();
   let ipAddress;
 
@@ -14,5 +14,3 @@ function getIPAddress() {
 
   return ipAddress;
 }
-
-module.exports = getIPAddress;
