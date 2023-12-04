@@ -18,30 +18,28 @@ const router: Router = express.Router();
 router.get('/', async (req, res) => {
 	console.log('Recieved GET request.');
 
-	const dydxAccount = await dydxGetAccount(req.body);
-	const perpAccount = await perpGetAccount();
+	// const dydxAccount = await dydxGetAccount(req.body);
+	// const perpAccount = await perpGetAccount();
 
-	if (!dydxAccount && !perpAccount) {
-		res.send('Error on getting account data');
-	} else {
-		const message =
-			'D account (default) ready: ' +
-			dydxAccount +
-			' | P account ready: ' +
-			perpAccount;
-		res.send(message);
-	}
+	// if (!dydxAccount && !perpAccount) {
+		// res.send('Error on getting account data');
+	// } else {
+		// const message = 'D account (default) ready: ' + dydxAccount + ' | P account ready: ' +	perpAccount;
+		// res.send(message);
+	// }
 
+	res.send('OK');
+	
 	const clientIP = getIPAddress(req);
 	console.log('IP address:', clientIP);
 });
 
 router.post('/', async (req, res) => {
-	console.log('Recieved Tradingview strategy alert:', req.body);
+	console.log('Recieved strategy alert:', req.body);
 
 	const validated = await validateAlert(req.body);
 	if (!validated) {
-		res.send('Error. alert message is not valid');
+		res.send('Error');
 		return;
 	}
 
