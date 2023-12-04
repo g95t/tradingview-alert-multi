@@ -37,30 +37,37 @@ export const dydxBuildOrderParams = async (alertMessage: AlertObject) => {
 	switch (alertMessage.exchID) {
 		case '1': {
 			ETHADDRESS = process.env.ETH_ADDRESS1!;
+			console.log('Build ETH1');
 			break;
 		}
 		case '2': {
 			ETHADDRESS = process.env.ETH_ADDRESS2!;
+			console.log('Build ETH2');
 			break;
 		}
 		case '3': {
 			ETHADDRESS = process.env.ETH_ADDRESS3!;
+			console.log('Build ETH3');
 			break;
 		}
 		case '4': {
 			ETHADDRESS = process.env.ETH_ADDRESS4!;
+			console.log('Build ETH4');
 			break;
 		}
 		case '5': {
 			ETHADDRESS = process.env.ETH_ADDRESS5!;
+			console.log('Build ETH5');
 			break;
 		}
 		case '6': {
 			ETHADDRESS = process.env.ETH_ADDRESS6!;
+			console.log('Build ETH6');
 			break;
 		}
 		default: {
 			ETHADDRESS = process.env.ETH_ADDRESS!;
+			console.log('Build ETH default');
 			break;
 		}
 	}
