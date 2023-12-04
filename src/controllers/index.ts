@@ -32,20 +32,7 @@ router.get('/', async (req, res) => {
 		res.send(message);
 	}
 
-
-	const forwardedFor = req.headers['x-forwarded-for'];
-	let clientIP: string;
-	if (forwardedFor) {
-		if (typeof forwardedFor === 'string') {
-			clientIP = forwardedFor;
-		} else if (Array.isArray(forwardedFor)) {
-			clientIP = forwardedFor[0];
-		} else {
-			clientIP = req.ip;
-		}
-	} else {
-		clientIP = req.ip;
-	}
+	const clientIP = getIPAddress(req);
 	console.log('IP address:', clientIP);
 });
 
@@ -90,6 +77,9 @@ router.post('/', async (req, res) => {
 	// checkAfterPosition(req.body);
 
 	res.send('OK');
+
+	const clientIP = getIPAddress(req);
+	console.log('IP address:', clientIP);
 });
 
 router.get('/debug-sentry', function mainHandler(req, res) {
